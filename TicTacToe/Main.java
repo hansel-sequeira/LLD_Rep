@@ -76,39 +76,19 @@ class TicTacToeManager {
             return gameWinner = true;
         count = 0;
 
-        int r = row, c = col;
-        while(r >=0 && c>=0) {
-            if(board.grid[r][c] == symbolRef)
+        for(int i=0,j=0;i<dimensions && j<dimensions;i++,j++)
+            if(board.grid[i][col] == symbolRef)
                 count++;
-            r--; c--;
-        }
-
-        r = row; c = col;
-        while(r<dimensions && c<dimensions) {
-            if(board.grid[r][c] == symbolRef)
-                count++;
-            r++; c++;
-        }
-        if(count-1 == dimensions)
-                return gameWinner = true;
+        if(count == dimensions)
+            return gameWinner = true;
         count = 0;
 
-
-        r = row; c = col;
-        while(r <dimensions && c>=0) {
-            if(board.grid[r][c] == symbolRef)
+        for(int i=0,j=dimensions-1;i<dimensions && j>=0;i++,j--)
+            if(board.grid[i][col] == symbolRef)
                 count++;
-            r++; c--;
-        }
-        r = row; c = col;
-        while(r>=0 && c<dimensions) {
-            if(board.grid[r][c] == symbolRef)
-                count++;
-            r--; c++;
-        }
-        if(count-1 == dimensions)
+        if(count == dimensions)
             return gameWinner = true;
-
+        
         return false;
     }
 
